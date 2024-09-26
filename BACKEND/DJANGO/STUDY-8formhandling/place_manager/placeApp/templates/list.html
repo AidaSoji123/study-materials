@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+<h1>list</h1>
+
+
+
+
+{% block content1 %}
+
+
+<!--list the data-->
+
+{% for x in data %}
+<h2>name :{{x.name|upper}}</h2>  <!--here we apply a filter to add capital letter for the name-->
+
+<h2>age :{{x.age}}</h2>
+
+<h2>gender :{{x.gender}}</h2>
+
+<h2>email :{{x.email}}</h2>
+
+<h2>phone :{{x.phone}}</h2>
+<img src="{% static 'images/' %}{{x.data.image}}">
+
+<h2>address :{{x.address |default:'not get'}}</h2>   <!--here a default filter used to apply default values-->
+</br>
+<h2>city from address :{{x.address.city}}</h2>
+{% endfor %}
+{% endblock %}
+
+
+

@@ -1,0 +1,119 @@
+1.What are local variables and global variables in Python?
+   .......................................................
+
+   Global Variables: Variables declared outside a function or in a global space are called global variables.
+    These variables can be accessed by any function in the program.
+
+    Local Variables: Any variable declared inside a function is known as a local variable. 
+     This variable is present in the local space and not in the global space.
+
+2.What is Lambda Functions in Python?
+
+   A Lambda Function is a small anonymous function. 
+    lambda function can take any number of arguments, but can only have one expression.\
+
+    x = lambda a : a + 10
+      print(x(5)) 
+      # Output: 15
+
+3.How do I modify a string in python?
+
+      You can’t because strings are immutable in python. In most situations,
+     you should simply construct a new string from the various parts you want to assemble it from. 
+     Work with them as lists; turn them into strings only when needed.
+
+     >>> s = list("Hello zorld")
+     >>> s
+     ['H', 'e', 'l', 'l', 'o', ' ', 'z', 'o', 'r', 'l', 'd']
+     >>> s[6] = 'W'
+     >>> s
+     ['H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd']
+      >>> "".join(s)
+      'Hello World'
+    
+4. What is the difference between a Set and Dictionary?
+     The set is an unordered collection of data types that is iterable, mutable and has no duplicate elements.
+      A dictionary in Python is an ordered collection of data values, used to store data values like a map.
+
+5.What is the difference between / and // in Python?
+    / represents precise division (result is a floating point number) whereas // represents floor division (result is an integer).
+    For Example:
+    5//2 = 2
+    5/2 = 2.5
+
+6. What is swapcase function in Python?
+    It is a string’s function that converts all uppercase characters into lowercase and vice versa. 
+    It is used to alter the existing case of the string. 
+    This method creates a copy of the string which contains all the characters in the swap case.
+     For Example:
+     string = "GeeksforGeeks"
+      string.swapcase() ---> "gEEKSFORgEEKS"
+
+7.How do you debug a Python program?
+    By using this command we can debug a Python program:
+    $ python -m pdb python-script.py
+
+8. Define encapsulation in Python?
+Encapsulation means binding the code and the data together. A Python class is an example of encapsulation.
+
+9.How to delete a file using Python?
+    We can delete a file using Python by following approaches:
+
+   1). os.remove()
+   2). os.unlink()
+
+10. What is a namespace in Python?
+    A namespace is a naming system used to make sure that names are unique to avoid naming conflicts.
+
+
+
+***************************************************************************************************************
+
+
+10 advanced questions of python interview 
+
+1.Decorators: What are decorators in Python, and how can they be used to modify function behavior?
+
+Answer: Decorators are functions that add functionality to existing functions. They are defined using the @ symbol. Decorators can be used for logging, 	timing, caching, and more.
+
+2.Generators: Explain generators in Python and their benefits compared to traditional functions.
+
+Answer: Generators are functions that return an iterator object, allowing for memory-efficient iteration through large datasets. They yield values one at a 	time instead of returning the entire result at once.
+
+3.Metaclasses: What are metaclasses and how can they be used to customize class behavior?
+
+Answer: Metaclasses are classes that define how a class is created. They allow for advanced functionalities like dynamic attribute creation or modifying 	class behavior based on specific conditions.
+
+4.Context Managers: Describe the with statement and how it utilizes context managers for resource management.
+
+Answer: The with statement simplifies resource management by ensuring proper cleanup. Context managers define the _enter_ and _exit_ methods to handle 	resource acquisition and release, respectively.
+
+5.Asynchronous Programming: Explain the concept of asynchronous programming in Python and how it's used for non-blocking I/O operations.
+
+Answer: Asynchronous programming allows your code to handle multiple tasks concurrently without blocking the main thread. Libraries like asyncio provide 	mechanisms for handling asynchronous I/O efficiently.
+
+6.Error Handling: How do you handle exceptions in Python using try-except blocks?
+
+Answer: The try-except block allows you to define code blocks to be executed in case of exceptions. You can handle specific exceptions or use a general 	except clause for broader error catching.
+
+7.Unit Testing: Why is unit testing important in Python development, and how can you implement unit tests effectively?
+
+Answer: Unit testing ensures the functionality of individual units of code. Frameworks like unittest provide functionalities to write test cases that verify 	expected behavior.
+
+8.Memory Management: Explain how memory management works in Python, and how to identify and avoid memory leaks.
+
+Answer: Python uses Automatic Garbage Collection (AGC) to manage memory. However, understanding reference counting and cyclic references can help identify 	potential memory leaks.
+
+9.Concurrency vs. Parallelism: Differentiate between concurrency and parallelism in Python and how the threading and multiprocessing modules can be used for each.
+
+Answer: Concurrency manages multiple tasks that appear to run simultaneously, while parallelism executes tasks truly at the same time (often requiring 	multiple cores). The threading module allows for concurrent execution within a single process, while multiprocessing utilizes multiple cores for 	parallel processing.
+
+10.Data Structures and Algorithms: Discuss the time and space complexity of common data structures (e.g., lists, dictionaries) and algorithms (e.g., 	sorting, searching).
+
+Answer: Understanding the complexities of data structures and algorithms helps you choose the most efficient approach for specific tasks. Be prepared to 	discuss trade-offs between different data structures and algorithms based on their complexity.
+
+
+
+******************************************************************************************************************************************************************************************************************
+
+

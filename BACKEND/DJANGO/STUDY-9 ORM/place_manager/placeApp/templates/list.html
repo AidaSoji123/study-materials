@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+<h1>list</h1>
+
+
+
+
+{% block content1 %}
+
+
+<!--list the data-->
+
+{% for x in data %}
+<h1>Place : {{x.place|upper}}</h1>
+<h1>summery : {{x.summery}}</h1>
+<h1>year : {{x.year}}</h1>
+{% endfor %}
+{% endblock %}
+
+
+

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>study-4</title>
+</head>
+<body>
+<!--Here we can get the data from views ,the data is stored in a variable as the key of views dictionary .Here the data access in double curley structure-->
+{% for x in person.data %}
+<h2>name :{{x.name|upper}}</h2>  <!--here we apply a filter to add capital letter for the name-->
+
+<h2>age :{{x.age}}</h2>
+
+<h2>gender :{{x.gender}}</h2>
+
+<h2>email :{{x.email}}</h2>
+
+<h2>phone :{{x.phone}}</h2>
+
+<h2>address :{{x.address |default:'not get'}}</h2>   <!--here a default filter used to apply default values-->
+</br>
+<h2>city from address :{{x.address.city}}</h2>
+
+<p>-----------------------------------------------------------</p>
+
+{% endfor %}
+
+{% for y in array1 %}
+<h3>
+{{y}}
+</h3>
+{% endfor %}
+
+
+
+
+
+
+
+</body>
+</html>

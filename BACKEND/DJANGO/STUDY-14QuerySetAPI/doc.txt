@@ -1,0 +1,49 @@
+in ---python manage.py shell
+----------------------------
+
+from placeApp . models import Place_details 
+
+>>> all_places = Place_details.objects.all()
+>>> all_places
+
+---------------------------------------------------------------------
+>>> for x in all_places:
+...     print(x)
+... 
+hiiiiiiiiiiiiiii
+hey
+maldives
+America
+bangaloor
+>>>
+-----------------------------------------------------------------------
+
+>>> type(all_places)
+<class 'django.db.models.query.QuerySet'>
+
+----------------------------------------------------------------------
+
+ To convert querySet into dictionary list
+ ----------------------------------------
+>>> all_places.values()
+
+
+<QuerySet [{'id': 2, 'place': 'hiiiiiiiiiiiiiii', 'summery': 'kkkkkkkkkkkkk', 'year': 2024, 'image': None, 'web_details_id': None, 'founted_by_id': None}, {'id': 1, 'place': 'hey', 'summery': 'vbcvhh', 'year': 2021, 'image': 'images/1082.jpg', 'web_details_id': 3, 'founted_by_id': None}, {'id': 4, 'place': 'maldives', 'summery': 'gd', 'year': 2024, 'image': 'images/1079.jpg', 'web_details_id': 5, 'founted_by_id': 1}, {'id': 5, 'place': 'America', 'summery': 'beautiful', 'year': 2026, 'image': '', 'web_details_id': None, 'founted_by_id': 1}, {'id': 6, 'place': 'bangaloor', 'summery': 'hey yo', 'year': 2014, 'image': 'images/3215.jpg', 'web_details_id': 6, 'founted_by_id': 1}]> 
+
+
+------------------FILTER-------------------
+
+in views
+--------
+
+def list(request):
+    place_data = Place_details.objects.filter(year=2021)
+    return render(request, "list.html", {"data": place_data})
+
+instead of this------------------------------------------------
+
+place_2021 = Place_details.objects.filter(year=2021)
+
+
+
+

@@ -1,0 +1,264 @@
+-------There are 3 types of relations in the django model
+	---------------------------------------------------
+   ----------------one-to-one relationships
+   ----------------many-to-one relationships
+   ----------------many-to-many relationships
+
+
+*********************************************************
+
+ONE-TO-ONE RELATIONSHIPS
+------------------------
+
+in models.py
+--------------
+
+class WebInfo(models.Model):
+    rating =models.CharField(max_length=10,null=True)
+    cirtified_by = models.CharField(max_length=200,null=True)
+
+    def __str__(self):
+        return self.rating
+
+-----add one-to-one field in Place_details model
+------------------------------------------------
+
+class Place_details(models.Model):
+    place = models.CharField(max_length=100)
+    summery = models.CharField(max_length=100)
+    year = models.IntegerField(default=2024)
+    image = models.ImageField(upload_to='images/' ,null=True)
+    web_details = models.OneToOneField(WebInfo,on_delete=models.SET_NULL,related_name='place',null=True)
+    
+  ------------------------------------------------------
+
+---------------------------------------------------------
+
+ONE-TO-MANY RELATIONSHIP
+---------------------------
+FOR this we are using shell for database operations----------
+
+
+in python manage.py shell
+-------------------------
+
+from placeApp . models import Place_details,WebInfo
+
+Place_details.objects.all()
+
+
+
+How to store and retrieve one-to-one field
+------------------------------------------
+
+webinfo = WebInfo.objects.create(rating='5*', cirtified_by="Anurudh")
+
+
+then check in the database
+--------------------------
+
+select * from "placeApp_webinfo"
+
+----------we get output:---
+place_db=# select * from "placeApp_webinfo";
+
+ id | rating | cirtified_by
+----+--------+--------------
+  1 | u      | Kishorkumar
+  2 | 5*     | Anurudh
+  3 | 5*     | Anurudh
+  4 | 4*     | Vimal kumar
+  5 | 4*     | kiran
+
+
+in shell:
+---------
+
+ hey_obj = Place_details.objects.get(place='hey')
+
+  hey_obj.web_details=webinfo
+
+  hey_obj.save()
+
+
+  ----to get the WebInfo objects--------------
+---------------------------------------------
+
+  hey_obj.web_details   
+
+  hey_obj.web_details.rating
+
+  hey_obj.web_details.cirtified_by
+
+  **********************************************
+
+WebInfo.objects.create(rating = '2*',cirtified_by = 'Aneena')
+
+ web_obj = WebInfo.objects.get(id = 6)
+
+ Place_details.objects.create(place = 'America',summery = 'beautiful',year= 2026)
+
+  America_obj.web_details= web_obj
+
+  America_obj.web_details.rating
+
+
+
+
+
+REVERSE RELATIONS
+-----------------
+place_obj1 = Place_details.objects.get(id=1)
+
+place_obj1.place 
+
+place_obj1.year
+
+------using related_name------------
+
+web_obj.place
+
+
+
+
+ONE-TO-MANY RELATIONSHIPS
+-------------------------
+
+in models
+---------
+class Founder(models.Model):
+    name = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = "founder_tb"
+
+--------------------------------------------------
+below OneToOneField--------------
+
+ 
+founted_by = models.ForeignKey(Founder,null=True,on_delete=models.CASCADE,related_name='founted')
+
+
+
+TO EXIT from shell
+-----------------
+
+exit()
+
+
+makemigrations
+migratep
+
+in python shell--------
+---------------
+
+from placeApp . models import Place_details,WebInfo,Founder
+
+place_obj1 =Place_details.objects.get(place = 'maldives')
+
+f1 = Founder.objects.create(name='Kennadi')
+
+
+ place_obj1.founted_by = f1
+>>> place_obj1.save()
+
+
+place_obj1.founted_by
+
+
+reverse RELATIONSHIPS
+---------------------
+
+f1.founted
+---------------this will makes error so run another command--
+--------fouted is the related_name
+
+f1.founted.all()
+
+------------
+all_places = f1.founted.all()
+
+
+then-------------------use for loop------
+
+
+>>> for obj in all_places:
+...     print(obj)
+
+------------output
+
+...
+maldives
+America 
+
+
+
+
+MANY-TO-MANY RELATIONSHIPS
+--------------------------
+
+in models
+----------
+
+
+class Traveller(models.Model):
+    name = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = "traveller_tb"
+
+
+
+below:--
+
+
+travellers = models.ManyToManyField(Traveller,related_name='visited')
+
+
+------------------------------------------------------------------
+
+makemigrations---
+migratep
+
+Here we get a mappers db_table
+
+
+HOW TO SET MANY-TO-MANY VALUES:-
+-------------------------------
+
+ from placeApp .models import Place_details,Traveller 
+
+ >>> from placeApp .models import Place_details,Traveller 
+>>> santhosh = Traveller.objects.create(name = 'Santhosh')
+>>> george= Traveller.objects.create(name = 'George')      
+>>> thomas= Traveller.objects.create(name = 'thomas') 
+>>> p1 = Place_details.objects.get(id = 4) 
+
+
+
+>>> p1.travellers.add(santhosh,george,thomas)       
+>>> p1.travellers.all()
+---------------------------------------------
+
+
+>>> p=p1.travellers.all()
+>>> for x in p:                                     
+...     print(x) 
+... 
+Santhosh
+George
+thomas
+>>>
+
+
+
+REVERSE:-
+------------
+
+Santhosh.visited.all()

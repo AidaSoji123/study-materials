@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% load static %}
+<h1>list</h1>
+
+{% block content1 %}
+
+<table>
+  <tr>
+    <th>Place</th>
+    <th>summery</th>
+    <th>Year</th>
+  </tr>
+  <!--list the data-->
+  {% for x in data %}
+  <tr>
+    <td><p>{{x.place|upper}}</p></td>
+    <td><p>{{x.summery}}</p></td>
+    <td><p>{{x.year}}</p></td>
+  </tr>
+
+  {% endfor %}
+</table>
+{% endblock %}

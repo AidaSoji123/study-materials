@@ -1,0 +1,103 @@
+
+step 1: pip install virtualenv
+
+step 2:virtualenv environment_naame
+
+step 3:environment_name\scripts\activate
+
+step 4:pip install Django
+
+step 5:django-admin startproject project_name
+
+step 6:cd project_name
+
+step 7:django-admin startapp app_name
+
+step 8:python manage.py runserver
+
+
+
+step 9:open views and create 
+"""
+from django.shortcuts import render
+
+def hello(request):
+    return render(request,'index.html')
+"""
+for the required elemnent to get
+
+step 10:go to urls and create a path('project/, include('firstapp.urls')),
+                                     
+
+step 11:go to urls of first app then 
+"""
+from django.urls import path
+from . import views
+urlpatterns = [
+    path('home/',views.hello),
+]
+
+"""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////-----------------------DJANGO INTRO------------------------------////////////////////
+
+
+
+
+CREATE A VIRTUAL ENVIRONMENT:---- It is to create for keeping all library files in that file because 
+                                
+                                    there is a chance to a conflict due to the different versions.
+                                    
+                                    it will helps to avoid that
+
+    virtualenv env_name
+
+    env\scripts\activate
+
+    deactivate
+
+
+INSTALL DJANGO    :--- 
+
+    pip install django
+            we can see this in virtualenv file\lib\site-packages
+
+
+CREATE A PROJECT    :---- 
+
+    django-admin startproject project_name(sample)
+
+            when we create a project then there build a skelton of that project by django.
+
+            in django each module is called apps,in a project there are many apps ,the apps communicate each other to work the project
+
+            when we create the project ,the main app also created by self with the project name itself
+
+RUN THE PROJECT    :----
+
+    cd sample
+
+    python manage.py runserver
+
+
+
+
+
